@@ -1,0 +1,15 @@
+# FPN Portal - Apache hardening
+# Protect sensitive folders/files from direct web access.
+
+# Disable directory listing
+Options -Indexes
+
+# Block direct access to config & includes
+<FilesMatch "\.(sql|md)$">
+    Require all denied
+</FilesMatch>
+
+# Prevent PHP execution inside the uploads directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>
